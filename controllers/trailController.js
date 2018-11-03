@@ -10,10 +10,20 @@ router.get('/', (req, res) => {
     console.log('get request')
 });
 
-router.post('/', (req, res) => {
-    res.status(200).json({
-        message: "handling post request"
-    });
+router.post('/', async (req, res) => {
+
+    try {
+        console.log(req.body, ' this is req.body');
+        const createdTrail = await Trail.create(req.body);
+        console.log(' response happening')
+        res.json({
+            status: 201,
+            data: createdTrail
+        });
+    } catch(err){
+        console.log(err);
+        res.send(err);
+    }
 });
 
 router.get('/:trailId', (req, res) => {
