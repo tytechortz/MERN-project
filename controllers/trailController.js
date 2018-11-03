@@ -33,10 +33,10 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:trailId', (req, res, next) => {
+router.get('/:trailId', async (req, res, next) => {
 
     try {
-        const foundTrail = await Trail.findById(req.params.id);
+        const foundTrail = await Trail.findById(req.params.trailId);
         res.json({
             status: 200,
             data: foundTrail
