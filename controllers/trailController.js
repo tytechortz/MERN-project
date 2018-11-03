@@ -30,4 +30,16 @@ router.get('/:trailId', (req, res) => {
     }
 });
 
+router.put('/:trailId', (req, res) => {
+    res.status(200).json({
+        message: 'updated trail'
+    });
+});
+
+router.delete('/:trailId', (req, res) => {
+    res.status(200).json({
+        message: 'deleted trail'
+    });
+});
+
 module.exports = router; 
