@@ -33,20 +33,21 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:trailId', (req, res) => {
-    const id = req.params.trailId;
-    if (id === 'a'){
-        res.status(200).json({
-            message: 'special',
-            id: id
+router.get('/:trailId', (req, res, next) => {
+
+    try {
+        const foundTrail = await Trail.findById(req.params.id);
+        res.json({
+            status: 200,
+            data: foundTrail
         });
-    } else {
-        res.status(200).json({
-            message: 'an id'
-        });
+    } catch (err){
+        res.send(err);
     }
+
 });
 
+ 
 router.put('/:trailId', (req, res) => {
     res.status(200).json({
         message: 'updated trail'
