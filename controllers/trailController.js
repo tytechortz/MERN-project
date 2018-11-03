@@ -3,16 +3,12 @@ const router = express.Router();
 
 const Trail = require('../models/trail');
 
-
-
-Trail.create({name: 'Red Rocks'}, (err, createdTrail) => {
-    if(err){
-        console.log(err);
-    } else {
-        console.log(createdTrail);
-    }
-});
-
+router.get('/', (req, res) => {
+    Trail.find({}, (err, trails) => {
+        res.json(trails)
+    })
+    console.log('get all')
+})
 
 
 module.exports = router;
