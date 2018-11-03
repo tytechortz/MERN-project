@@ -48,16 +48,30 @@ router.get('/:trailId', async (req, res, next) => {
 });
 
  
-router.put('/:trailId', (req, res) => {
-    res.status(200).json({
-        message: 'updated trail'
-    });
+router.put('/:trailId', async (req, res) => {
+
+    try {
+        const updateTrail = await Trail.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.json({
+            status: 200,
+            data: updatedTrail
+        });
+    } catch(err){
+      res.send(err)  
+    }
 });
 
-router.delete('/:trailId', (req, res) => {
-    res.status(200).json({
-        message: 'deleted trail'
-    });
+router.delete('/:trailId', async (req, res) => {
+
+    try {
+        const deleted = await Trail.findByIdAndRemove(req.params.trailId);
+        res.json({
+            status: 200,
+            data: deletedTrail
+        });
+    } catch(err){
+      res.send(err);
+    }   
 });
 
 module.exports = router; 
