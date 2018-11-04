@@ -21,11 +21,11 @@ router.post('/', async (req, res) => {
 
     try {
         console.log(req.body, ' this is req.body');
-        const createdTrail = await Trail.create(req.body);
+        const addedTrail = await Trail.create(req.body);
         console.log(' response happening')
         res.json({
             status: 201,
-            data: createdTrail
+            data: addedTrail
         });
     } catch(err){
         console.log(err);

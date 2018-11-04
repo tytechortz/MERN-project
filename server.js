@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 
 const trailController = require('./controllers/trailController');
 
-app.use('/trails', trailController);
+app.use('/api/v1/trails', trailController);
 
 
 app.listen(process.env.PORT || 9000, () => {
