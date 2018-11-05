@@ -51,7 +51,7 @@ router.get('/:trailId', async (req, res, next) => {
 router.put('/:trailId', async (req, res) => {
 
     try {
-        const updatedTrail = await Trail.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        const updatedTrail = await Trail.findByIdAndUpdate(req.params.trailId, req.body, {new: true});
         res.json({
             status: 200,
             data: updatedTrail
