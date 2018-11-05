@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Trail = require('../models/trail');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     console.log(req.body, 'this is get all')
         try {
             const allTrails = await Trail.find();
