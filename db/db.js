@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/trails');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/trails');
 
 mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected')
